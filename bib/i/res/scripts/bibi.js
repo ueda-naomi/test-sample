@@ -2490,16 +2490,7 @@ sML = function() {
       I.Panel.close(e)
     }), E.add("bibi:commands:toggle-panel", function(e) {
       I.Panel.toggle(e)
-    }), I.Panel.Labels = {
-      "default": {
-        "default": "Opoen this Index",
-        ja: "この目次を開く"
-      },
-      active: {
-        "default": "Close this Index",
-        ja: "この目次を閉じる"
-      }
-    }, I.setFeedback(I.Panel, {
+    }),I.setFeedback(I.Panel, {
       StopPropagation: !0
     }), I.Panel.addTapEventListener("tapped", function() {
       E.dispatch("bibi:commands:toggle-panel")
@@ -2583,33 +2574,13 @@ sML = function() {
         default:
           return "center" == t.Division.X && E.dispatch("bibi:commands:toggle-menu")
       }
-    }), I.Menu.L = I.Menu.appendChild(sML.create("div", {
+    }),I.Menu.L = I.Menu.appendChild(sML.create("div", {
       id: "bibi-menu-l"
-    })), I.Menu.R = I.Menu.appendChild(sML.create("div", {
+    })),I.Menu.R = I.Menu.appendChild(sML.create("div", {
       id: "bibi-menu-r"
     })), sML.appendStyleRule(["html.view-vertical div#bibi-menu"].join(", "), "width: calc(100% - " + O.Scrollbars.Width + "px);"), sML.appendStyleRule(["html.view-vertical.panel-opened div#bibi-menu", "html.view-vertical.subpanel-opened div#bibi-menu"].join(", "), "width: 100%; padding-right: " + O.Scrollbars.Width + "px;"), I.createMenu.createPanelSwitch(), I.createMenu.SettingMenuComponents = [], S["fix-reader-view-mode"] || I.createMenu.SettingMenuComponents.push("ViewModeButtons"), O.WindowEmbedded && I.createMenu.SettingMenuComponents.push("NewWindowButton"), O.FullscreenEnabled && !O.Mobile && I.createMenu.SettingMenuComponents.push("FullscreenButton"), S["website-href"] && /^https?:\/\/[^\/]+/.test(S["website-href"]) && S["website-name-in-menu"] && I.createMenu.SettingMenuComponents.push("WebsiteLink"), S["remove-bibi-website-link"] || I.createMenu.SettingMenuComponents.push("BibiWebsiteLink"), I.createMenu.SettingMenuComponents.length && I.createMenu.createSettingMenu(), E.dispatch("bibi:created-menu")
   }, I.createMenu.createPanelSwitch = function() {
-    I.PanelSwitch = I.createButtonGroup({
-      Area: I.Menu.L,
-      Sticky: !0
-    }).addButton({
-      Type: "toggle",
-      Labels: {
-        "default": {
-          "default": "Open Index",
-          ja: "目次を開く"
-        },
-        active: {
-          "default": "Close Index",
-          ja: "目次を閉じる"
-        }
-      },
-      Help: !0,
-      Icon: '<span class="bibi-icon bibi-icon-toggle-panel"><span class="bar-1"></span><span class="bar-2"></span><span class="bar-3"></span></span>',
-      action: function() {
-        I.Panel.toggle()
-      }
-    }), E.add("bibi:opened-panel", function() {
+    E.add("bibi:opened-panel", function() {
       I.setUIState(I.PanelSwitch, "active")
     }), E.add("bibi:closed-panel", function() {
       I.setUIState(I.PanelSwitch, "")
